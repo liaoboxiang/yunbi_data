@@ -16,7 +16,8 @@
 
 -export([
 		 start_server/0,
-		 stop_server/0
+		 stop_server/0,
+		 stop_server_call/1
 		]).
 
 %% 外部调用
@@ -25,11 +26,14 @@ start_server() ->
 	application:start(?APP),
 	ok.
 
-%% 外部调用
 %% 应用的停止函数
 stop_server() ->
 	application:stop(?APP),
 	erlang:halt().
+
+%% 外部调用
+stop_server_call([Node]) ->
+	rpc:call(Node, ?MODULE, stop_server, []).
 
 %% ====================================================================
 %% Behavioural functions

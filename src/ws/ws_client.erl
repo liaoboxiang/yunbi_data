@@ -29,6 +29,7 @@
           waiting = undefined :: undefined | pid()
          }).
 
+%% test
 start_link() ->
 	Url = "wss://slanger.yunbi.com:18080/app/d2e734a0694b3cb3ed8cdcadcc6f346e?protocol=7&client=js&version=2.2.0&flash=false",
     Subscibe = #yunbi_subscibe{
@@ -38,18 +39,24 @@ start_link() ->
 	start_link(Subscibe).
 
 start_link(Subscibe) ->
-    Res = 
-	case catch websocket_client:start_link(Subscibe#yunbi_subscibe.url, ?MODULE, [Subscibe]) of
-		{ok, Pid} -> 
-			RegName = list_to_atom("ws_" ++ atom_to_list(Subscibe#yunbi_subscibe.name)),
-			erlang:register(RegName, Pid),
-			{ok, Pid};
-		Error -> 
-			timer:sleep(1*1000),
-			Error
-	end,
-%% 	?DG("~p",[Res]),
-	Res.
+	try_start_link(Subscibe, 0, none).
+
+%% 尝试连接
+%% return {ok, Pid} | {error, Reason}
+try_start_link(Subscibe, Times, ErrReason) ->
+	case Times >= 10 of
+		true -> {error, ErrReason};
+		false ->
+			case catch websocket_client:start_link(Subscibe#yunbi_subscibe.url, ?MODULE, [Subscibe]) of
+				{ok, Pid} -> 
+					RegName = list_to_atom("ws_" ++ atom_to_list(Subscibe#yunbi_subscibe.name)),
+					erlang:register(RegName, Pid),
+					{ok, Pid};
+				Error -> 
+					timer:sleep(1*1000),
+					try_start_link(Subscibe, Times + 1, Error)
+			end
+	end.
 
 stop(Pid) ->
     Pid ! stop.
@@ -90,8 +97,8 @@ websocket_handle(Frame, _, State = #state{waiting = From}) ->
     ?DG("Client received frame2 ~p~n",["b"]),
     From ! Frame,
     {ok, State#state{waiting = undefined, buffer = []}};
-websocket_handle(Info, _, State) ->
-    ?DG("undefine handle:~p~n", [Info]),
+websocket_handle(_Info, _, State) ->
+    ?DG("undefine handle:~p~n", [_Info]),
     {ok, State}.
 
 websocket_info({send_text, Text}, WSReq, State) ->
@@ -121,8 +128,8 @@ websocket_info(stop, _, State) ->
 websocket_info(ping, _, State) ->
     ping(),
 	{ok, State};
-websocket_info(Any, _, State) ->
-    ?DG("info:~p~n", [Any]),
+websocket_info(_Any, _, State) ->
+    ?DG("info:~p~n", [_Any]),
 	{ok, State}.
 
 websocket_terminate(_Close, _, _State) ->

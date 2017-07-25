@@ -1,0 +1,1 @@
+erl -noshell -name yunbi_stop@127.0.0.1 -hidden -s yunbi_app stop_server_call yunbi@127.0.0.1 -s c q

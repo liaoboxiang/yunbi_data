@@ -229,13 +229,14 @@ websocket_close(WSReq, HandlerState, Reason) ->
             exit(Reason2)
     end.
 
-error_info(Handler, Reason, State) ->
-    error_logger:error_msg(
-        "** Websocket handler ~p terminating~n"
-        "** for the reason ~p~n"
-        "** Handler state was ~p~n"
-        "** Stacktrace: ~p~n~n",
-        [Handler, Reason, State, erlang:get_stacktrace()]).
+error_info(_Handler, _Reason, _State) ->
+%%     error_logger:error_msg(
+%%         "** Websocket handler ~p terminating~n"
+%%         "** for the reason ~p~n"
+%%         "** Handler state was ~p~n"
+%%         "** Stacktrace: ~p~n~n",
+%%         [Handler, Reason, State, erlang:get_stacktrace()]),
+	ok.
 
 %% @doc Key sent in initial handshake
 -spec generate_ws_key() ->
