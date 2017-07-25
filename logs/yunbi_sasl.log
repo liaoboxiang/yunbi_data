@@ -1,0 +1,170 @@
+
+=CRASH REPORT==== 24-Jul-2017::17:52:36 ===
+  crasher:
+    initial call: websocket_client:ws_client_init/7
+    pid: <0.95.0>
+    registered_name: ws_all
+    exception exit: remote
+      in function  websocket_client:websocket_close/3 (d:/projects/workplace/yunbi/src/ws/websocket_client.erl, line 225)
+    ancestors: [ws_sup,yunbi_sup,<0.73.0>]
+    messages: []
+    links: [<0.94.0>]
+    dictionary: []
+    trap_exit: false
+    status: running
+    heap_size: 987
+    stack_size: 27
+    reductions: 8318
+  neighbours:
+
+=SUPERVISOR REPORT==== 24-Jul-2017::17:52:36 ===
+     Supervisor: {local,ws_sup}
+     Context:    child_terminated
+     Reason:     remote
+     Offender:   [{pid,<0.95.0>},
+                  {id,all},
+                  {mfargs,
+                      {ws_client,start_link,
+                          [{yunbi_subscibe,all,
+                               "wss://slanger.yunbi.com:18080/app/d2e734a0694b3cb3ed8cdcadcc6f346e?protocol=7&client=js&version=2.2.0&flash=false",
+                               [<<"{\"event\":\"pusher:subscribe\",\"data\":{\"channel\":\"market-global\"}}">>]}]}},
+                  {restart_type,permanent},
+                  {shutdown,brutal_kill},
+                  {child_type,worker}]
+
+
+=CRASH REPORT==== 24-Jul-2017::17:53:01 ===
+  crasher:
+    initial call: websocket_client:ws_client_init/7
+    pid: <0.98.0>
+    registered_name: ws_all
+    exception exit: remote
+      in function  websocket_client:websocket_close/3 (d:/projects/workplace/yunbi/src/ws/websocket_client.erl, line 225)
+    ancestors: [ws_sup,yunbi_sup,<0.73.0>]
+    messages: []
+    links: [<0.94.0>]
+    dictionary: []
+    trap_exit: false
+    status: running
+    heap_size: 2586
+    stack_size: 27
+    reductions: 9822
+  neighbours:
+
+=SUPERVISOR REPORT==== 24-Jul-2017::17:53:01 ===
+     Supervisor: {local,ws_sup}
+     Context:    child_terminated
+     Reason:     remote
+     Offender:   [{pid,<0.98.0>},
+                  {id,all},
+                  {mfargs,
+                      {ws_client,start_link,
+                          [{yunbi_subscibe,all,
+                               "wss://slanger.yunbi.com:18080/app/d2e734a0694b3cb3ed8cdcadcc6f346e?protocol=7&client=js&version=2.2.0&flash=false",
+                               [<<"{\"event\":\"pusher:subscribe\",\"data\":{\"channel\":\"market-global\"}}">>]}]}},
+                  {restart_type,permanent},
+                  {shutdown,brutal_kill},
+                  {child_type,worker}]
+
+
+=CRASH REPORT==== 24-Jul-2017::17:53:30 ===
+  crasher:
+    initial call: websocket_client:ws_client_init/7
+    pid: <0.104.0>
+    registered_name: ws_all
+    exception exit: remote
+      in function  websocket_client:websocket_close/3 (d:/projects/workplace/yunbi/src/ws/websocket_client.erl, line 225)
+    ancestors: [ws_sup,yunbi_sup,<0.73.0>]
+    messages: []
+    links: [<0.94.0>]
+    dictionary: []
+    trap_exit: false
+    status: running
+    heap_size: 2586
+    stack_size: 27
+    reductions: 10309
+  neighbours:
+
+=SUPERVISOR REPORT==== 24-Jul-2017::17:53:30 ===
+     Supervisor: {local,ws_sup}
+     Context:    child_terminated
+     Reason:     remote
+     Offender:   [{pid,<0.104.0>},
+                  {id,all},
+                  {mfargs,
+                      {ws_client,start_link,
+                          [{yunbi_subscibe,all,
+                               "wss://slanger.yunbi.com:18080/app/d2e734a0694b3cb3ed8cdcadcc6f346e?protocol=7&client=js&version=2.2.0&flash=false",
+                               [<<"{\"event\":\"pusher:subscribe\",\"data\":{\"channel\":\"market-global\"}}">>]}]}},
+                  {restart_type,permanent},
+                  {shutdown,brutal_kill},
+                  {child_type,worker}]
+
+
+=CRASH REPORT==== 24-Jul-2017::17:54:00 ===
+  crasher:
+    initial call: websocket_client:ws_client_init/7
+    pid: <0.106.0>
+    registered_name: ws_all
+    exception exit: remote
+      in function  websocket_client:websocket_close/3 (d:/projects/workplace/yunbi/src/ws/websocket_client.erl, line 225)
+    ancestors: [ws_sup,yunbi_sup,<0.73.0>]
+    messages: []
+    links: [<0.94.0>]
+    dictionary: []
+    trap_exit: false
+    status: running
+    heap_size: 610
+    stack_size: 27
+    reductions: 10509
+  neighbours:
+
+=SUPERVISOR REPORT==== 24-Jul-2017::17:54:00 ===
+     Supervisor: {local,ws_sup}
+     Context:    child_terminated
+     Reason:     remote
+     Offender:   [{pid,<0.106.0>},
+                  {id,all},
+                  {mfargs,
+                      {ws_client,start_link,
+                          [{yunbi_subscibe,all,
+                               "wss://slanger.yunbi.com:18080/app/d2e734a0694b3cb3ed8cdcadcc6f346e?protocol=7&client=js&version=2.2.0&flash=false",
+                               [<<"{\"event\":\"pusher:subscribe\",\"data\":{\"channel\":\"market-global\"}}">>]}]}},
+                  {restart_type,permanent},
+                  {shutdown,brutal_kill},
+                  {child_type,worker}]
+
+
+=CRASH REPORT==== 24-Jul-2017::17:54:22 ===
+  crasher:
+    initial call: websocket_client:ws_client_init/7
+    pid: <0.108.0>
+    registered_name: ws_all
+    exception exit: remote
+      in function  websocket_client:websocket_close/3 (d:/projects/workplace/yunbi/src/ws/websocket_client.erl, line 225)
+    ancestors: [ws_sup,yunbi_sup,<0.73.0>]
+    messages: []
+    links: [<0.94.0>]
+    dictionary: []
+    trap_exit: false
+    status: running
+    heap_size: 2586
+    stack_size: 27
+    reductions: 9440
+  neighbours:
+
+=SUPERVISOR REPORT==== 24-Jul-2017::17:54:22 ===
+     Supervisor: {local,ws_sup}
+     Context:    child_terminated
+     Reason:     remote
+     Offender:   [{pid,<0.108.0>},
+                  {id,all},
+                  {mfargs,
+                      {ws_client,start_link,
+                          [{yunbi_subscibe,all,
+                               "wss://slanger.yunbi.com:18080/app/d2e734a0694b3cb3ed8cdcadcc6f346e?protocol=7&client=js&version=2.2.0&flash=false",
+                               [<<"{\"event\":\"pusher:subscribe\",\"data\":{\"channel\":\"market-global\"}}">>]}]}},
+                  {restart_type,permanent},
+                  {shutdown,brutal_kill},
+                  {child_type,worker}]
+
