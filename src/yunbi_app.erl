@@ -96,10 +96,11 @@ start_msg_sup(Sup) ->
 	ok.
 
 start_redis_sup(Sup) ->
+	{ok, ConfigList} = application:get_env(?APP, redis_config),
   	{ok,_} = supervisor:start_child(
                Sup,
                {redis,
-                {redis, start_link, []},
+                {redis, start_link, [ConfigList]},
                 permanent, brutal_kill, worker, [redis]}),
 	ok.
 

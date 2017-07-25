@@ -9,6 +9,7 @@
 %% API functions
 %% ====================================================================
 -export([start_link/0,
+		 start_link/1,
 		 stop/0,
 		 set/2,
 		 get/1,
@@ -27,6 +28,15 @@
 
 start_link() ->
 	{ok, Pid} = eredis:start_link(),
+	erlang:register(?MODULE, Pid),
+	{ok, Pid}.
+
+start_link(Configs) ->
+	{_, Host} = lists:keyfind(host, 1, Configs),
+	{_, Port} = lists:keyfind(port, 1, Configs),
+	{_, Database} = lists:keyfind(database, 1, Configs),
+	{_, Password} = lists:keyfind(password, 1, Configs),
+	{ok, Pid} = eredis:start_link(Host, Port, Database, Password),
 	erlang:register(?MODULE, Pid),
 	{ok, Pid}.
 
